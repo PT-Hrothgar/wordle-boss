@@ -1,0 +1,51 @@
+[project]
+name = "wordle-boss"
+dynamic = ["version"]
+authors = [
+    {name = "PT-Hrothgar"}
+]
+description = "Get the smartest Wordle guesses you'll find all day."
+readme = "README.rst"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: C",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Games/Entertainment",
+    "Topic :: Games/Entertainment :: Puzzle Games"
+]
+license = "MIT"
+license-files = ["LICENSE*"]
+
+[project.urls]
+Repository = "https://github.com/PT-Hrothgar/wordle-boss"
+Changelog = "https://github.com/PT-Hrothgar/wordle-boss/blob/main/CHANGELOG.rst"
+Documentation = "https://wordle-boss.readthedocs.io/en/stable"
+Download = "https://wordle-boss.readthedocs.io/en/stable/installation.html"
+
+[project.optional-dependencies]
+past-answers = [
+    "requests",
+    "beautifulsoup4",
+    "html5lib"
+]
+
+[build-system]
+build-backend = "mesonpy"
+requires = ["meson-python"]
+
+[tool.cibuildwheel]
+before-all = "uname -a"
+# Disable free-threading builds on all platforms
+skip = "cp3??t-*"
