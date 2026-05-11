@@ -665,7 +665,8 @@ int best_guess(word_node *guesses, word_node *targets, const char *absurdle_targ
     int_node *best_int_list = NULL;
     int_node *int_list;
     bool new_best;
-    char min_feedback[N], feedback[N], best_word[N + 1];
+    char min_feedback[N], feedback[N], best_word[N + 1], cmp_res, this_word_in_targets;
+    char best_word_in_targets = 0;
 
     for (word_node *guess = guesses; guess != NULL; guess = guess->next)
     {
@@ -686,7 +687,10 @@ int best_guess(word_node *guesses, word_node *targets, const char *absurdle_targ
             return -1;
         }
 
-        if (int_node_cmp(int_list, best_int_list) < 0)
+        cmp_res = int_node_cmp(int_list, best_int_list);
+        this_word_in_targets = word_list_contains(guess->word, targets);
+
+        if (cmp_res < 0 || (cmp_res == 0 && this_word_in_targets && !best_word_in_targets))
         {
             new_best = true;
             if (absurdle_target != NULL)
@@ -705,6 +709,7 @@ int best_guess(word_node *guesses, word_node *targets, const char *absurdle_targ
             {
                 free_int_node_list(best_int_list);
                 best_int_list = int_list;
+                best_word_in_targets = this_word_in_targets;
                 strcpy(best_word, guess->word);
             }
             else
