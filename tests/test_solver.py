@@ -325,6 +325,11 @@ class BestGuessTest(unittest.TestCase):
         self.assertEqual(s2.best_guess(), "EEEAB")
         self.assertEqual(s2.best_guess(absurdle_target="EEEAB"), "LLLLL")
 
+    def test_prefer_possible_target(self):
+        words = ["BRAIN", "DRAIN"]
+        s = Solver(words, get_word_list(SHORT_LIST))
+        self.assertTrue(s.best_guess() in words)
+
 
 if __name__ == "__main__":
     unittest.main()
