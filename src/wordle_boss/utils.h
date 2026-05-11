@@ -101,5 +101,9 @@ word_node *word_list_create(PyObject *python_list);
   Convert the given feedback to a Python list of integers. Return NULL and set an error on failure.
 */
 PyObject *fb_to_python_fb(const char *fb);
+/*
+  Return non-zero if the given linked list contains the given word.
+*/
+char word_list_contains(const char *word, word_node *list);
 
 #endif // UTILS_H

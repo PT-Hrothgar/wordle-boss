@@ -421,3 +421,18 @@ PyObject *fb_to_python_fb(const char *fb)
     }
     return res;
 }
+
+/*
+  Return non-zero if the given linked list contains the given word.
+*/
+char word_list_contains(const char *word, word_node *list)
+{
+    for (word_node *this = list; this != NULL; this = this->next)
+    {
+        if (!strcmp(this->word, word))
+        {
+            return 1;
+        }
+    }
+    return 0;
+}

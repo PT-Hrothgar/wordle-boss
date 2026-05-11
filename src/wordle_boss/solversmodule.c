@@ -784,16 +784,7 @@ static PyObject *Solver_python_best_guess(PyObject *op, PyObject *args, PyObject
             return NULL;
         }
         // Ensure `absurdle_target` is one of the possibilities
-        bool success = false;
-        for (word_node *this_word = targets; this_word != NULL; this_word = this_word->next)
-        {
-            if (!strcmp(this_word->word, absurdle_target))
-            {
-                success = true;
-                break;
-            }
-        }
-        if (!success)
+        if (!word_list_contains(absurdle_target, targets))
         {
             PyErr_SetString(PyExc_ValueError, "Absurdle target is not one of the possibilities");
             free_word_node_list(targets);
