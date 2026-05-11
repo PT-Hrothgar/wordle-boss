@@ -17,7 +17,7 @@ __all__ = [
     "Solver"
 ]
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 from wordle_boss.lists import get_past_answers, get_word_list
 from wordle_boss.solvers import Solver, get_response
