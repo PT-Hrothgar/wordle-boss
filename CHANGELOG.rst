@@ -1,8 +1,16 @@
 Changelog
 =========
 
-v1.0.2 (latest)
+v1.0.3 (latest)
 ---------------
+
+Fix an instance of faulty linked list handling that was causing
+``Solver.get_min_feedback()`` and ``Solver.best_guess()`` to produce
+occasional segmentation faults. Because this substantial bug is present in
+all prior releases, **it is recommended that they not be used**.
+
+v1.0.2
+------
 
 Prefer guesses that are possible target words, all other things being equal.
 
@@ -35,6 +43,6 @@ target word itself and the other is not, the package will prefer the possible
 target word.
 
 v1.0.1
----------------
+------
 
 Initial release.
