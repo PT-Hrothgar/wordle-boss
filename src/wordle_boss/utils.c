@@ -253,6 +253,7 @@ feedback_node *inc_feedback_count(feedback_node *fb_list, const char *new_fb, bo
     }
     memmove(new_node->feedback, new_fb, N);
     new_node->possibilities = 1;
+    new_node->next = NULL;
 
     if (fb_list == NULL)
     {
